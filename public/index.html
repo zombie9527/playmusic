@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>音乐播放</title>
+    <link rel="stylesheet" href="style/main.css">
+</head>
+<body>
+    <header>
+        <h1>音乐</h1>
+    </header>
+    <section>
+        <div class="plays-list" id="playsList">
+            <ul>
+                <li>
+                    <div class="pl-name fl">歌曲</div>
+                    <div class="pl-author fl">歌手</div>
+                    <div class="pl-duration fl">时长</div>
+                </li>
+            </ul>
+            <ul class="song-list" id="songBox"></ul>
+        </div>
+        <div class="lyricBox">
+            <div id="lyric">
+            </div>
+        </div>
+    </section>
+    <div id="control">
+        <a href="javascript:;" class="btn_prev" id="btnPrev" title="上一首"></a>
+        <a href="javascript:;" class="btn_play" id="btnPlay" title="开始/暂停"></a>
+        <a href="javascript:;" class="btn_next" id="btnNext" title="下一首"></a>
+        <div class="progress-bar">
+            <div class="pb-info" id="scheduleInfo">
+                <span class="fl  song-name">飘向北方</span>
+                <span class="fl song-time">00:00 / 00:00</span>
+            </div>
+            <div class="player_progress" id="progress">
+                <div class="player_progress__inner" id="spanplayer_bgbar">
+                    <div class="player_progress__play" id="spanplaybar"><i class="player_progress__dot" id="spanprogress_op"></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        SongPlus.init({
+            "prevBtn":$("#btnPrev"),
+            "stopBtn":$("#btnPlay"),
+            "nextBtn":$("#btnNext"),
+            "playList":$("#songBox"),
+            "videoId":"myMusic",
+            "scheduleItem":$("#progress"),
+            "scheduleDetail":$("#spanplaybar"),
+            "scheduleInfo":$("#scheduleInfo"),
+            "lyricBox":$("#lyric")
+        })
+    </script>
+</body>
+</html>

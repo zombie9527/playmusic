@@ -1,0 +1,164 @@
+*{
+    margin: 0;padding: 0;
+    list-style: none;
+    user-select: none;
+}
+body,html{
+    background-color:rgb(127, 78, 102);
+    height: 100%;
+    color: #ccc;
+}
+header{
+    padding: 20px;
+    margin-left:30px; 
+}
+/*歌曲条目*/
+section{
+    height: 70%;
+    margin: 0 100px;
+}
+.plays-list,.lyricBox{
+    width: 40%;
+    display: inline-block;
+}
+.plays-list{
+    height: 100%;
+    overflow: hidden;
+}
+.plays-list ul:first-child{
+    padding-left: 10px; 
+}
+.plays-list li div{
+    float: left;
+    position: relative;
+}
+.pl-name,.songlist_songname{
+    width: 45%;
+}
+.pl-author,.songlist_artist{
+    width: 30%;
+}
+.pl-duration,.songlist_time{
+    width: 50px;
+}
+.song-list{
+    padding: 20px 0;
+}
+.song-list li{
+    border-top: 1px solid rgba(255,255,255,.1);
+    overflow: hidden;
+    clear: both;
+    padding: 10px 0;
+    cursor: pointer;
+}
+.song-list li:hover,.song-list .select{
+    color: #fff;
+}
+/*歌词区域*/
+.lyricBox{
+    overflow: hidden;
+    height: 100%;
+    position: relative;
+}
+#lyric{
+    top: 50%;
+    left: 30%;
+    text-align: center;
+    font-size: 14px;
+    position: absolute;
+    cursor: move;
+}
+#lyric>div{
+    height: 34px;
+    line-height: 34px;
+    color: #ccc;
+    margin: 10px 0;
+}
+#lyric .active{
+    color: #31c27c;
+}
+/*歌曲控制*/
+.btn_prev,.btn_play,.btn_next,.btn_pause,.player_progress__dot{
+    position: absolute;
+    height: 20px;
+    width: 19px;
+    opacity: .8;
+    background-image: url('images/player.png');
+}
+.btn_prev{
+    top: 4px;
+    left: 0;
+    background-position: 0 -30px;
+}
+.btn_play{
+    top: 0;
+    left: 76px;
+    height: 29px;
+    width: 21px;
+    background-position: 0 0;
+}
+.btn_next{
+    top: 4px;
+    left: 148px;
+    background-position: 0 -50px;
+}
+.btn_pause{
+    top: 0;
+    left: 76px;
+    height: 29px;
+    width: 21px;
+    background-position: -30px 0;
+}
+#control{
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    right: 10%;
+    height: 11%;
+}
+.pb-info{
+    padding-right: 90px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.song-time{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.progress-bar{
+    position: relative;
+    margin: 0 208px 0 208px;
+}
+.player_progress {
+    padding-top: 6px;
+    height: 8px;
+    cursor: pointer;
+}
+.player_progress__inner {
+    position: relative;
+    height: 2px;
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled='true', startColorstr='#19FFFFFF', endColorstr='#19FFFFFF');
+    background: rgba(255,255,255,.1);
+}
+.player_progress__play {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2px;
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled='true', startColorstr='#B2FFFFFF', endColorstr='#B2FFFFFF');
+    background: rgba(255,255,255,.7);
+}
+.player_progress__dot {
+    top: -4px;
+    right: -4px;
+    width: 10px;
+    height: 10px;
+    background-position: 19px -37px;
+    opacity: 1;
+    filter: none;
+}
+video{
+    display: none;
+}
