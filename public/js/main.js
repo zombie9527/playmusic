@@ -201,7 +201,7 @@
         loadSong:function(){
             var _this = this;
             $.ajax({
-                url:"/json/songInfo.json",
+                url:"json/songInfo.json",
                 method:"post",
                 success:function(data){
                     var dataHtml = "",
