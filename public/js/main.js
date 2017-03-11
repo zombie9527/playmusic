@@ -226,7 +226,7 @@
             var _this = this;
             $.ajax({
                 url:"json/songInfo.json",
-                method:"post",
+                method:"get",
                 success:function(data){
                     var dataHtml = "",
                         songInfos = data.data;
@@ -242,7 +242,7 @@
                         currObj = JSON.stringify(currObj);
                         dataHtml += '<li data-info='+currObj+'><div class="songlist_songname">'+songInfos[i].songName.replace(/&/g," ")+'</div><div class="songlist_artist">'+(songInfos[i].artist.replace(/&/g," ")||'未知')+'</div><div class="songlist_time">'+songInfos[i].duration+'</div></li>';
                     }
-                    _this.param.playList.append(dataHtml);
+                    _this.param.playList.html("").append(dataHtml);
                     _this.bindDomEvent();
                 }
             })

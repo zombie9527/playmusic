@@ -11,6 +11,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', function(req, res) {
 	res.sendfile(__dirname + '/index.html');
 });
-app.post('/json/songInfo.json',function(req,res){
+app.get('/json/songInfo.json',function(req,res){
 	res.sendfile('json/songInfo.json');
 })
