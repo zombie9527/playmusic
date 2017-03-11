@@ -1,7 +1,7 @@
-var express = require('express');
-var app = express();
-var server = require('http').createServer(app);
-var path = require("path");
+var express = require('express'),
+	app = express(),
+	server = require('http').createServer(app),
+	path = require("path");
 
 var port = process.env.PORT || 3000;
 server.listen(port);

@@ -20,51 +20,51 @@
         },
         {
             "songId":3,
-            "songName":"飘向北方",
-            "songUrl":"music/1.mp3",
-            "lyricUrl":"music/1.lrc",
-            "artist":"黄明志&王力宏",
-            "duration":"04:30"
+            "songName":"Long&Way&Home",
+            "songUrl":"music/3.mp3",
+            "lyricUrl":"music/3.lrc",
+            "artist":"Alex&Masters",
+            "duration":"03:13"
         },
         {
             "songId":4,
-            "songName":"老人与海",
-            "songUrl":"music/2.mp3",
-            "lyricUrl":"music/2.lrc",
-            "artist":"海鸣威",
-            "duration":"04:26"
+            "songName":"Nighty&Night",
+            "songUrl":"music/4.mp3",
+            "lyricUrl":"music/4.lrc",
+            "artist":"Jenny&Owen&Youngs",
+            "duration":"03:37"
         },
         {
             "songId":5,
-            "songName":"飘向北方",
-            "songUrl":"music/1.mp3",
-            "lyricUrl":"music/1.lrc",
-            "artist":"黄明志&王力宏",
-            "duration":"04:30"
+            "songName":"Mr.Arrow&Key",
+            "songUrl":"music/5.mp3",
+            "lyricUrl":"music/5.lrc",
+            "artist":"Lena",
+            "duration":"03:34"
         },
         {
             "songId":6,
-            "songName":"老人与海",
-            "songUrl":"music/2.mp3",
-            "lyricUrl":"music/2.lrc",
-            "artist":"海鸣威",
-            "duration":"04:26"
+            "songName":"Tennis&Elbow",
+            "songUrl":"music/6.mp3",
+            "lyricUrl":"music/6.lrc",
+            "artist":"Sky&Sailing",
+            "duration":"03:45"
         },
         {
             "songId":7,
-            "songName":"飘向北方",
-            "songUrl":"music/1.mp3",
-            "lyricUrl":"music/1.lrc",
-            "artist":"黄明志&王力宏",
-            "duration":"04:30"
+            "songName":"Just&You&And&Me",
+            "songUrl":"music/7.mp3",
+            "lyricUrl":"music/7.lrc",
+            "artist":"Zee&Avi",
+            "duration":"02:57"
         },
         {
             "songId":8,
-            "songName":"老人与海",
-            "songUrl":"music/2.mp3",
-            "lyricUrl":"music/2.lrc",
-            "artist":"海鸣威",
-            "duration":"04:26"
+            "songName":"Animals",
+            "songUrl":"music/8.mp3",
+            "lyricUrl":"music/8.lrc",
+            "artist":"Maroon",
+            "duration":"03:51"
         }
     ]
 }

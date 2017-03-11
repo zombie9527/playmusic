@@ -18,7 +18,7 @@ section{
     margin: 0 100px;
 }
 .plays-list,.lyricBox{
-    width: 40%;
+    width: 45%;
     display: inline-block;
 }
 .plays-list{
@@ -36,13 +36,13 @@ section{
     width: 45%;
 }
 .pl-author,.songlist_artist{
-    width: 30%;
+    width: 45%;
 }
 .pl-duration,.songlist_time{
-    width: 50px;
+    width: 10%;
 }
 .song-list{
-    padding: 20px 0;
+    padding: 30px 0;
 }
 .song-list li{
     border-top: 1px solid rgba(255,255,255,.1);

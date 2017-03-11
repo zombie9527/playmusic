@@ -56,8 +56,7 @@
             _this.param.scheduleItem.on("mousedown",function(e){
                 if(!_this.stopFlag) return;
                 var leftposition = e.offsetX;
-                $("#"+_this.param.videoId)[0].pause();
-                clearTimeout(_this.playControl);
+                _this.tempPause();
                 _this.leftPos = leftposition/_this.param.scheduleItem.width();
                 _this.param.scheduleDetail.css({"width":_this.leftPos*100+"%"});
                 _this.controlFlag = 1;
@@ -80,27 +79,28 @@
                 if(_this.controlFlag){
                     videoEle.currentTime = videoEle.duration * _this.leftPos;
                     _this.controlFlag = 0;
-                    videoEle.play();
-                    _this.playSongControl();
+                    _this.tempPlay();
                 }else if(_this.touchFlag){
-                    var ind = Math.floor((_this.param.lyricBox.parent().height()/2 - parseInt(_this.param.lyricBox.css("top")))/44);
+                    var ind = Math.floor((_this.param.lyricBox.parent().height()/2 - 100 - parseInt(_this.param.lyricBox.css("top")))/44);
                     videoEle.currentTime = _this.time[ind];
                     _this.touchFlag = 0;
-                    videoEle.play();
-                    _this.playSongControl();
+                    _this.tempPlay();
                 }
             });
             _this.param.lyricBox.on("mousedown",function(e){
                 if(!_this.stopFlag) return;
-                $("#"+_this.param.videoId)[0].pause();
-                clearTimeout(_this.playControl);
+                _this.tempPause();
                 _this.topPos = e.clientY;
                 _this.oldTop = parseInt(_this.param.lyricBox.css("top"));
                 _this.touchFlag = 1;
             });
         },
+        /**
+         * 播放进度控制
+         */
         playSongControl:function(){
             var _this = this;
+            clearTimeout(_this.playControl);
             _this.playControl = setTimeout(function(){
                 var videoEle = $("#"+_this.param.videoId)[0];
                 _this.param.scheduleDetail.css({"width":(videoEle.currentTime/videoEle.duration)*100+"%"});
@@ -109,8 +109,10 @@
                     songTime = _this.analysisTime(songLength),
                     currTime = _this.analysisTime(currLength);
                 if(songLength == currLength){
-                    if($(".select").next())
+                    if($(".select").next().length)
                         $(".select").next().click();
+                    else
+                        _this.param.playList.children()[0].click();
                 }
                 _this.param.scheduleInfo.find(".song-time").text(currTime+"/"+songTime);
                 _this.lyricWalk(currLength,"active");
@@ -118,17 +120,18 @@
                 _this.playSongControl();
             },200)
         },
+        /**
+         * 歌词移动
+         */
         lyricWalk:function(position,css){
             var time = 0,
                 obj = this;
-                // console.log(position);
             function set(index){
                 var height = 44,
                     box = obj.param.lyricBox[0];
                 $(box).animate({
-                    top:box.parentElement.clientHeight/2-index*height+"px"
+                    top:box.parentElement.clientHeight/2-index*height-100+"px"
                 },8);
-                // $(box).scrollTop(index*height-box.parentElement.clientHeight/2);
                 obj.param.lyricBox.find("div").eq(index).addClass(css).siblings("."+css).removeClass(css);
             }
             for(var i = 0;i < obj.index;i++){
@@ -140,6 +143,21 @@
             }
             set(time);
         },
+        /**
+         * 快进暂停、开始
+         */
+        tempPause:function(){
+            $("#"+this.param.videoId)[0].pause();
+            clearTimeout(this.playControl);
+        },
+        tempPlay:function(){
+            $("#"+this.param.videoId)[0].play();
+            this.param.stopBtn.removeClass("btn_play").addClass("btn_pause");
+            this.playSongControl();
+        },
+        /**
+         * 计算播放时间
+         */
         analysisTime:function(turnTime){
             var newTime = "";
             if(Math.floor(turnTime/60)>9){
@@ -155,6 +173,9 @@
             newTime += Math.floor(turnTime%60);
             return newTime;
         },
+        /**
+         * 歌词面板
+         */
         createPanel:function(obj){
             $(obj).html("");
             var dataHtml = "";
@@ -163,6 +184,9 @@
             }
             $(obj).append(dataHtml);
         },
+        /**
+         * 加载歌词
+         */
         loadLyric:function(lyricUrl,fn){
             var _this = this
             $.ajax({
@@ -201,7 +225,7 @@
         loadSong:function(){
             var _this = this;
             $.ajax({
-                url:"/json/songInfo.json",
+                url:"json/songInfo.json",
                 method:"post",
                 success:function(data){
                     var dataHtml = "",
@@ -216,7 +240,7 @@
                             "duration":songInfos[i].duration
                         }
                         currObj = JSON.stringify(currObj);
-                        dataHtml += '<li data-info='+currObj+'><div class="songlist_songname">'+songInfos[i].songName+'</div><div class="songlist_artist">'+(songInfos[i].artist||'未知')+'</div><div class="songlist_time">'+songInfos[i].duration+'</div></li>';
+                        dataHtml += '<li data-info='+currObj+'><div class="songlist_songname">'+songInfos[i].songName.replace(/&/g," ")+'</div><div class="songlist_artist">'+(songInfos[i].artist.replace(/&/g," ")||'未知')+'</div><div class="songlist_time">'+songInfos[i].duration+'</div></li>';
                     }
                     _this.param.playList.append(dataHtml);
                     _this.bindDomEvent();
